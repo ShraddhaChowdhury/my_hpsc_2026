@@ -1,0 +1,20 @@
+def sqrt_newton(N, tol=1e-10, max_iter=1000):
+    if N < 0:
+        raise ValueError("Cannot take square root of negative number")
+    if N == 0:
+        return 0
+
+    x = N / 2  # initial guess
+
+    for _ in range(max_iter):
+        x_new = 0.5 * (x + N / x)
+        if abs(x_new - x) < tol:
+            return x_new
+        x = x_new
+
+    return x  # return best estimate if max_iter reached
+
+
+# Example
+num = 10
+print("Square root:", sqrt_newton(num))
